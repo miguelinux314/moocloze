@@ -69,8 +69,18 @@ class Field(_abc.ABC):
 class Numerical(Field):
     """A single cloze numerical question field.
     """
+    # Correct numerical value. Consider a non-zero tolerance for non-integer answers.
     answer: int
+    # Weight given to the response in this field. Useful when more than one field is employed.
     weight: int = 1
+    # Absolute error tolerance. For instance, if the answer is 10 and tolerance is 0.05, any
+    # value between 9.95 and 10.05 will be accepted as valid by the system
+    tolerance: float = 0
+    # If True, any non-zero tolerance will be displayed after the input field
+    show_tolerance: bool = True
 
     def __str__(self):
-        return f"{{{self.weight}:NUMERICAL:={self.answer}}}"
+        s = f"{{{self.weight}:NUMERICAL:={self.answer}:{self.tolerance}}}"
+        if self.show_tolerance and self.tolerance > 0:
+            s += f" (\\(\\pm {self.tolerance}\\))"
+        return s
