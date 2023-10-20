@@ -102,8 +102,9 @@ class Multiresponse(Field):
     weight: int = 1
 
     def __str__(self):
-        assert len(self.correct_answers) + len(self.incorrect_answers) > 0, \
-            "At least one correct or incorrect answer must be specified"
+        if not self.correct_answers:
+            raise ValueError("At least one valid correct answer is required by Moodle. "
+                             "None provided.")
         s = (f"{{{self.weight}:MULTIRESPONSE"
              f"{'_' if self.horizontal or self.shuffle else ''}"
              f"{'H' if self.horizontal else ''}"
