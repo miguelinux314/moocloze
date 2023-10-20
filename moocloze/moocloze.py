@@ -118,3 +118,14 @@ class Multiresponse(Field):
         s += "~".join(f"{'=' if correct else ''}{text}" for text, correct in text_correct_tuples)
         s += "}"
         return s
+
+
+@_dataclass
+class ShortAnswer(Field):
+    """Single short answer text.
+    """
+    answer: str
+    weight: int = 1
+
+    def __str__(self):
+        return f"{{{self.weight}:SHORTANSWER:={self.answer}}}"
