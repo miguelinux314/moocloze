@@ -7,10 +7,25 @@ but reducing the necessity of specific knowledge about the
 Moodle XML or Cloze formats.
 
 Contents:
+* [Installation](#installation)
 * [Minimal example](#minimal_example)
 * [Creating questions and importing into moodle](#workflow)
 * [Full example](#full_example)
 * [References](#references)
+
+## Installation <a id="installation"/>
+
+The `moocloze` library is available as a pip package:
+
+```bash
+pip install moocloze
+```
+
+You can then import it as a normal package in any python code:
+
+```python
+import moocloze
+```
 
 ## Minimal example <a id="minimal_example"/>
 
