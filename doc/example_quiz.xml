@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><quiz>
+<question type="cloze">
+    <name><text>How much is 0+0</text></name>
+    <questiontext>
+    <text><![CDATA[What is the result of 0+0? {1:NUMERICAL:=0:0}]]></text>
+    </questiontext>
+    <generalfeedback>
+    <text></text>
+    </generalfeedback>
+    <shuffleanswers>1</shuffleanswers>
+</question>
+
+<question type="cloze">
+    <name><text>How much is 1+1</text></name>
+    <questiontext>
+    <text><![CDATA[What is the result of 1+1? {1:NUMERICAL:=2:0}]]></text>
+    </questiontext>
+    <generalfeedback>
+    <text></text>
+    </generalfeedback>
+    <shuffleanswers>1</shuffleanswers>
+</question>
+
+<question type="cloze">
+    <name><text>How much is 2+2</text></name>
+    <questiontext>
+    <text><![CDATA[What is the result of 2+2? {1:NUMERICAL:=4:0}]]></text>
+    </questiontext>
+    <generalfeedback>
+    <text></text>
+    </generalfeedback>
+    <shuffleanswers>1</shuffleanswers>
+</question>
+
+</quiz>

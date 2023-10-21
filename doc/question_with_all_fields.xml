@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><quiz>
+<question type="cloze">
+    <name><text>Question testing all supported Cloze fields</text></name>
+    <questiontext>
+    <text><![CDATA[This is a question testing all supported Cloze fields.<br/><ul><li><strong>moocloze.Numerical</strong>: expect integer or decimal values.<br/>Here, exactly 10 is expected, and any other value will be considered wrong: {1:NUMERICAL:=10:0}.<br/>In the next box, the value of \(\pi\) is expected, with a tolerance of 0.0001: {1:NUMERICAL:=3.141592653589793:0.0001} (\(\pm 0.0001\)). The message displaying error tolerance can be disabled at will</li><li><strong>moocloze.Multiresponse</strong>: provide 1 or more options, of which at least 1 must be correct. The user must check only those that are correct.<br/>Here, the user is expected to check out numbers and not letters: {1:MULTIRESPONSE_HS:=0~=1~=123~a~b}<br/>The same question can be shown vertically and/or without shuffling the options: {1:MULTIRESPONSE:=0~=1~=123~a~b}<br/>You can use the `shuffle` parameter to provide a random or lexicographic order of options.</li><li><strong>moocloze.Multichoice</strong>: provide 1 correct option and any number of incorrect options. The user must select the correct one. Different display modes are possible. In all the following, the negative value must be selected:<br/>As a dropdown menu (default): {1:MULTICHOICE:=-1~0~10~5}<br/>As a vertical set of radio buttons: {1:MULTICHOICE_V:=-1~0~10~5}<br/>As a horizontal set of radio buttons: {1:MULTICHOICE_H:=-1~0~10~5}<br/>You can also use the `shuffle` parameter to provide a random or lexicographic order of options.</li><li><strong>moocloze.ShortAnswer</strong>: expect a specific string from the user. For instance, the human's best friend is expected as the input: {1:SHORTANSWER:=book}.</li></ul>Note that all fields admit a `weight` parameter that determines its relative value within the question they are displayed. For instance the following one is 10 times as important as any of the others: {10:MULTICHOICE:=choose me~do not choose me}]]></text>
+    </questiontext>
+    <generalfeedback>
+    <text></text>
+    </generalfeedback>
+    <shuffleanswers>1</shuffleanswers>
+</question>
+
+</quiz>
