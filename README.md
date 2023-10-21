@@ -8,7 +8,7 @@ Moodle XML or Cloze formats.
 
 Contents:
 * [Minimal example](#minimal_example)
-* [Creating questions and importing into moodle](#importing)
+* [Creating questions and importing into moodle](#workflow)
 * [Full example](#full_example)
 * [References](#references)
 
