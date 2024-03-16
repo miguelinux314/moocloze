@@ -221,3 +221,10 @@ class ShortAnswer(Field):
 
     def __str__(self):
         return f"{{{self.weight}:SHORTANSWER:={self.answer}}}"
+
+
+def questions_to_xml_file(questions: _List[Question], output_path: str):
+    """Generate an XML file with the given questions so that they can be imported
+    in Moodle.
+    """
+    Quiz(questions=questions).to_xml_file(output_path=output_path)
