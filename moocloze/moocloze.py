@@ -33,8 +33,10 @@ class Question:
     """
     # Question title
     name: str
-    # Question main text
+    # Question main text (HTML)
     contents: str
+    # Question general feedback (HTML)
+    general_feedback: str = ""
 
     def to_xml_file(self, output_path: _Union[str | _Path]):
         """Save this question as a single-element Quiz in Moodle XML format, which can be
@@ -46,7 +48,7 @@ class Question:
 
     def __str__(self) -> str:
         """Get a string that represents this question in Moodle XML/Cloze format. Note that this
-        output cannot be directly impoted by Moodle; you need to use Question.to_xml_file or
+        output cannot be directly imported by Moodle; you need to use Question.to_xml_file or
         Quiz.to_xml_file to include all necessary tags.
         """
         return _textwrap.dedent(f"""
@@ -56,7 +58,7 @@ class Question:
         <text><![CDATA[{self.contents}]]></text>
         </questiontext>
         <generalfeedback>
-        <text></text>
+        <text><![CDATA[{self.general_feedback}]]></text>
         </generalfeedback>
         <shuffleanswers>1</shuffleanswers>
     </question>""").strip()
