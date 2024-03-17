@@ -69,7 +69,9 @@ def generate_question_all_fields(output_path="question_with_all_fields.xml"):
                   "one is 10 times as important as any of the others: " +
                   str(moocloze.Multichoice(correct_answer='choose me',
                                            incorrect_answers=['do not choose me'],
-                                           weight=10)))
+                                           weight=10))),
+        general_feedback="This feedback will be shown whenever the user completes the question "
+                         "(correctly or otherwise)."
     )
 
     moocloze.Quiz([question]).to_xml_file(output_path=output_path)
