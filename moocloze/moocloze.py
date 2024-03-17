@@ -64,31 +64,6 @@ class Question:
     </question>""").strip()
 
 
-@_dataclass
-class Quiz:
-    """A set of one or more questions.
-    """
-    # List of one or more questions comprising this quiz
-    questions: _List[Question]
-
-    def to_xml_file(self, output_path: _Union[str | _Path]):
-        """Save this quiz (list of one or more questions) into Moodle Cloze/XML format.
-        """
-        if not self.questions:
-            raise ValueError("At least one question is needed.")
-
-        with open(output_path, "w") as output_file:
-            output_file.write(str(self) + "\n")
-
-    def __str__(self) -> str:
-        """Return a string with all of this quiz's questions in Cloze/XML format, which that can
-        be directly imported in Moodle.
-        """
-        return ('<?xml version="1.0" encoding="UTF-8"?><quiz>\n' +
-                "\n\n".join(str(q) for q in self.questions) +
-                "\n\n</quiz>")
-
-
 class Field(_abc.ABC):
     """Base class for cloze question fields. These can be used to include different type of
     expected user inputs in Question instances.
@@ -223,6 +198,32 @@ class ShortAnswer(Field):
 
     def __str__(self):
         return f"{{{self.weight}:SHORTANSWER:={self.answer}}}"
+
+
+@_dataclass
+class Quiz:
+    """A set of one or more questions. In most cases, you don't need to instantiate this
+    class, and can use `moocloze.questions_to_xml_file` directly.
+    """
+    # List of one or more questions comprising this quiz
+    questions: _List[Question]
+
+    def to_xml_file(self, output_path: _Union[str | _Path]):
+        """Save this quiz (list of one or more questions) into Moodle Cloze/XML format.
+        """
+        if not self.questions:
+            raise ValueError("At least one question is needed.")
+
+        with open(output_path, "w") as output_file:
+            output_file.write(str(self) + "\n")
+
+    def __str__(self) -> str:
+        """Return a string with all of this quiz's questions in Cloze/XML format, which that can
+        be directly imported in Moodle.
+        """
+        return ('<?xml version="1.0" encoding="UTF-8"?><quiz>\n' +
+                "\n\n".join(str(q) for q in self.questions) +
+                "\n\n</quiz>")
 
 
 def questions_to_xml_file(questions: _List[Question], output_path: str):
