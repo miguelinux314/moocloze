@@ -40,9 +40,7 @@ questions = [moocloze.Question(
              f"{moocloze.Numerical(i + i)}")
     for i in range(3)]
 
-quiz = moocloze.Quiz(questions)
-
-quiz.to_xml_file(output_path="example_quiz.xml")
+moocloze.questions_to_xml_file(questions=questions, output_path="example_quiz.xml")
 ``` 
 
 generates a file in Cloze/XML format ([download XML file](https://raw.githubusercontent.com/miguelinux314/moocloze/master/doc/sample_quiz.xml))
@@ -63,32 +61,31 @@ The following workflow is proposed to add questions to a Moodle category
      import moocloze
      questions = [moocloze.Question(name="...", contents="..."), ...]
      ```
-  2. Define a Quiz containing that list of questions.
+  2. Export the set of questions into an .xml file with Moodle XML/Cloze format
      ```python
-     quiz = moocloze.Quiz(questions)
-     ```
-  3. Use that quiz's to_xml_file method to create a .xml file with the Moodle XML/Cloze format.
-     ```python
-     quiz.to_xml_file("my_questions.xml") 
+     moocloze.questions_to_xml_file(questions=questions, output_path="my_questions.xml")
      ```
 
 * In Moodle: 
 
-  4. Go to your course's Question bank
+  3. Go to your course's Question bank
+  
      ![question bank](https://github.com/miguelinux314/moocloze/blob/master/doc/moodle_question_bank.png?raw=true)
   
-  5. (Optional) Go to the question Categories page and add your category
+  4. (Optional) Go to the question Categories page and add your category
+  
      ![categories](https://github.com/miguelinux314/moocloze/blob/master/doc/moodle_categories.png?raw=true)
   
-  6. Go to the question Import page, select the category where questions are to be imported 
-     (here "Raw audio file size", shown under the "General" section), upload your xml file (e.g., "my_questions.xml" in
-     the example below) and press "Import":
+  5. Go to the question Import page, select the category where questions are to be imported 
+     (here "Raw audio file size", shown under the "General" section), upload your xml file 
+     (e.g., "my_questions.xml" in the example below) and press "Import":
+  
      ![import](https://github.com/miguelinux314/moocloze/blob/master/doc/moodle_import.png?raw=true)
 
   8. You will be shown a confirmation page. If no errors are found, 
      you are done!
 
-## Full example <a id="full_example"/>
+## Full example with all field types <a id="full_example"/>
 
 You can find a [complete example](https://raw.githubusercontent.com/miguelinux314/moocloze/master/examples/generate_all_fields.py?raw=true)
 that produces a single question using all supported field (response) types:
@@ -99,6 +96,22 @@ that produces a single question using all supported field (response) types:
 * `moocloze.ShortAnswer` (short text)
 
 A screenshot of the question is shown next ([see full size](https://github.com/miguelinux314/moocloze/blob/master/doc/example_all_fields_screenshot.png?raw=true)):
+
+## Adding feedback to the questions
+
+Whenever you instantiate the `moocloze.Question`, you can pass a `general_feedback` parameter to it,
+as in:
+
+```python
+import moocloze
+
+question = moocloze.Question(
+    name=f"Simple question",
+    contents=f"How many sides does a dodecahedron have?"
+             f"{moocloze.Numerical(answer=12, show_tolerance=False)}",
+    general_feedback="Do not confuse it with the icosahedron (20 faces).")
+```
+
 
 ![import](https://github.com/miguelinux314/moocloze/blob/master/doc/example_all_fields_screenshot.png?raw=true)
 
