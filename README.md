@@ -66,7 +66,7 @@ The following workflow is proposed to add questions to a Moodle category
      moocloze.questions_to_xml_file(questions=questions, output_path="my_questions.xml")
      ```
 
-* In Moodle: 
+* In your Moodle course, import the questions: 
 
   3. Go to your course's Question bank
   
@@ -83,7 +83,11 @@ The following workflow is proposed to add questions to a Moodle category
      ![import](https://github.com/miguelinux314/moocloze/blob/master/doc/moodle_import.png?raw=true)
 
   8. You will be shown a confirmation page. If no errors are found, 
-     you are done!
+     your generated questions are now read to be used! 
+
+  9. If you don't have one, create a Quiz activity. Go to its Questions tab, and add them as desired.
+     Moodle allows showing random questions from a given category. You can use it to your advantage to 
+     have each student use a randomized variation of a problem, e.g., with different numeric values. 
 
 ## Full example with all field types <a id="full_example"/>
 
